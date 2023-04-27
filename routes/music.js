@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://0.0.0.0/spotify')
 
 const musicSchema = mongoose.Schema({
   name: String,

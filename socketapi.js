@@ -11,7 +11,6 @@ io.on('connection', function (socket) {
   console.log('A user connected')
   socket.on('currentlyPlaying', async (msg) => {
     var currentUser = await userModel.findOne({ _id: msg.userId })
-    console.log(currentUser)
     currentUser.currentDevices.forEach((socketId) => {
       if (socket.id != socketId)
         socket.to(socketId).emit('currentlyPlaying', msg.music)

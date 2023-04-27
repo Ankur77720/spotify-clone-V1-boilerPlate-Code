@@ -1,18 +1,67 @@
 var express = require('express')
 var router = express.Router()
 var userModel = require('./users.js')
-var artistModel = require('./artist.js')
 const mongoose = require('mongoose')
-var { upload, conn, db } = require('./multer.js')
 const Grid = require('gridfs-stream')
 const music = require('./music.js')
 var localStrategy = require('passport-local')
 var passport = require('passport')
-var playListModel = require('./playList.js')
-var GoogleStrategy = require('passport-google-oidc')
 require('dotenv').config()
 
+mongoose
+  .connect('mongodb://0.0.0.0/spotify')
+  .then((result) => {
+    console.log('connected to database')
+  })
+  .catch((err) => {
+    console.log('err')
+  })
+var conn = mongoose.connection
+function isAlreadyLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) res.redirect('/')
+  else return next()
+}
+
+function isloggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next()
+  else res.redirect('/login')
+}
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+  return arr
+}
+let gridFSBucket
+let gridFSBucketImage
+let gfs
+let gfsImage
+let gfsArtist
+function trimEmail(email) {
+  const username = email.slice(0, email.indexOf('@'))
+
+  return username
+}
+conn.once('open', () => {
+  gfs = Grid(conn.db, mongoose.mongo)
+  gfsImage = Grid(conn.db, mongoose.mongo)
+  gfsArtist = Grid(conn.db, mongoose.mongo)
+  gfs.collection('music')
+  gfsImage.collection('posters')
+  gfsArtist.collection('artist')
+  gridFSBucket = new mongoose.mongo.GridFSBucket(conn.db, {
+    bucketName: 'music',
+  })
+  gridFSBucketImage = new mongoose.mongo.GridFSBucket(conn.db, {
+    bucketName: 'posters',
+  })
+  gridFSBucketArtist = new mongoose.mongo.GridFSBucket(conn.db, {
+    bucketName: 'artist',
+  })
+})
 // **************** user authentication related routes here
+passport.use(new localStrategy(userModel.authenticate()))
 router.post('/register', isAlreadyLoggedIn, async (req, res, next) => {
   var userQueue = shuffleArray(
     await music
@@ -83,7 +132,6 @@ router.get('/', isloggedIn, async function (req, res, next) {
       .skip(Math.floor(Math.random() * 360))
       .limit(6)
   ).reverse()
-  var playLists = await playListModel.find({}).limit(6)
   var dailyRemixes = await music
     .find({})
     .skip(Math.floor(Math.random() * 270))
@@ -101,9 +149,7 @@ router.get('/', isloggedIn, async function (req, res, next) {
   var currentUser = await userModel
     .findOne({ username: req.user.username })
     .populate('playlists')
-  var artists = await artistModel.find({})
 
-  artists = shuffleArray(artists)
   var lastPlaying
   if (req.user.lastPlaying) lastPlaying = req.user.lastPlaying
   else lastPlaying = topMusic
@@ -111,8 +157,6 @@ router.get('/', isloggedIn, async function (req, res, next) {
     username: req.user.username,
     topMusic,
     songs,
-    artists,
-    playLists,
     dailyRemixes,
     lastPlaying,
     currentQueue: currentQueue,
@@ -120,6 +164,25 @@ router.get('/', isloggedIn, async function (req, res, next) {
   })
 })
 // ************* songs by artist ********************* //
+
+//  ******************* Random songs ******************* //
+router.post('/randomSongs', isloggedIn, async (req, res, next) => {
+  var songs = shuffleArray(
+    await music
+      .find({})
+      .skip(Math.floor(Math.random() * 340))
+      .limit(25),
+  )
+  res.status(200).json({ status: 'success', musics: songs })
+})
+router.post('/liked', isloggedIn, async (req, res, next) => {
+  var songs = await userModel
+    .findOne({ username: req.user.username })
+    .populate('liked')
+  songs = songs.liked
+  res.status(200).json({ status: 'success', musics: songs })
+})
+//  ******************* Random songs ******************* //
 
 // **************** Get music here ***************************
 router.get('/file/:filename', isloggedIn, async function (req, res) {
@@ -149,7 +212,6 @@ router.get('/file/:filename', isloggedIn, async function (req, res) {
       'Content-Range': `bytes ${start}-${end}/${fileSize}`,
       'Accept-Ranges': 'bytes',
       'Content-Length': CHUNK_SIZE,
-      'Content-Type': getContentType(req.params.filename),
     }
 
     // HTTP Status 206 for Partial Content
@@ -172,8 +234,12 @@ router.get('/file/:filename', isloggedIn, async function (req, res) {
       },
     )
     readstream.pipe(res)
-  } catch (err) {}
+  } catch (err) {
+    console.log(err)
+  }
 })
+// **************** Get music here ***************************
+
 // **************** Get music here ***************************
 
 // **************** Get poster here **************************
