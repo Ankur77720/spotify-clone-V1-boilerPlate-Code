@@ -1,0 +1,37 @@
+#nav ul {
+  list-style-type: none;
+}
+#nav ul .nav-item {
+  font-weight: 500;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  transition: opacity 150ms ease-in-out;
+  cursor: pointer;
+  color: #fff;
+  opacity: 0.7;
+}
+#nav ul .nav-item.active {
+  opacity: 1;
+}
+#nav ul .nav-item.active i {
+  color: rgb(0, 172, 26) !important;
+}
+#nav ul .nav-item.active span {
+  color: rgb(0, 172, 26) !important;
+}
+#nav ul .nav-item:hover {
+  opacity: 1;
+}
+#nav ul .nav-item i {
+  font-size: 1.4rem;
+}
+#nav ul .nav-item span {
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#nav ul .nav-item:hover span {
+  margin-left: 7px;
+  opacity: 1;
+}

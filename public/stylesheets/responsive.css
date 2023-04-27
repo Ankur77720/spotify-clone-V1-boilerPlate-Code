@@ -1,0 +1,220 @@
+.details .text p,
+.details .text small {
+  font-size: 0.7rem;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media screen and (max-width: 850px) {
+  .gap-3 {
+    gap: 0.5rem !important;
+  }
+  .mainContent {
+    padding-left: 9px !important;
+    padding-right: 9px !important;
+  }
+  #content .topCard h1 {
+    max-width: 270px;
+  }
+
+  #playerImg {
+    display: none;
+  }
+  .navButtons button {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .dropdown-toggle::after {
+    display: none;
+  }
+  ::-webkit-scrollbar {
+    background-color: #00000059;
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #00000000;
+  }
+  .textLogo {
+    display: initial !important;
+  }
+  .searches,
+  .likes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0;
+    padding-bottom: 13vh;
+  }
+  .likes > *,
+  .searches > * {
+    padding: 2.5px 4px !important;
+  }
+  .userProfile {
+    padding: 0 !important;
+  }
+  .username {
+    display: none !important;
+  }
+  #content .topCard {
+    display: none !important;
+  }
+  #playlists {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+    gap: 0.3rem;
+  }
+  #playlists img {
+    max-height: 50px;
+  }
+  .books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+    gap: 0.2rem;
+    padding-bottom: 13vh;
+  }
+  .books .container-fluid {
+    padding: 0 !important;
+  }
+  .books img {
+    height: 35vh;
+    max-height: 180px !important;
+    object-fit: cover;
+    background-color: #494949;
+  }
+  #playlists .playlist {
+    max-height: 50px;
+  }
+  #playlists .songTitle {
+    width: 40vw;
+    max-width: 100px;
+    font-size: 0.8rem;
+  }
+  .playlist small {
+    display: none !important;
+  }
+  #recommends {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  body,
+  html {
+    height: -webkit-fill-available;
+  }
+  #main {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  #nav {
+    height: 7vh;
+    width: 100vw;
+    padding: 0 !important;
+    background-color: #00000022;
+    justify-content: center;
+    align-items: center;
+  }
+  .searchContainer {
+    width: 60vw;
+    min-width: 200px;
+    max-width: 350px;
+    left: 10px;
+    transform: translate(0, 0);
+  }
+  .logo {
+    display: none;
+  }
+  .mainNavigation ul {
+    width: 100vw;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    justify-content: space-around;
+  }
+  .mainNavigation ul br {
+    display: none;
+  }
+  .mainNavigation ul li {
+    float: left;
+  }
+  .mainNavigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+    max-height: 40px;
+  }
+  .mainNavigation ul li span {
+    display: none;
+  }
+  #nav hr {
+    display: none;
+  }
+  .mainNavigation .userNavigation {
+    display: none;
+  }
+  .player {
+    bottom: 7vh;
+    width: 90%;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(7, 7, 7);
+    background: linear-gradient(to right, rgb(63, 12, 63), rgb(43, 19, 76));
+    align-items: center;
+    height: 55px !important;
+    opacity: 0.92;
+    padding-bottom: 20px !important;
+  }
+  .player .details {
+    width: 90%;
+    max-height: 55px !important;
+  }
+  .mobilePrev,
+  .mobileNext {
+    display: initial !important;
+    color: #fff !important;
+  }
+  #playerImg {
+    display: none;
+    max-height: 55px !important;
+  }
+
+  .player .details .text {
+    width: 95%;
+  }
+  .details .text p {
+    font-size: 0.8rem;
+    max-width: 60vw;
+  }
+  #playerSongArtist {
+    max-width: 60vw;
+  }
+  .details .text p,
+  .details .text small {
+    width: 100%;
+  }
+
+  .player .controls {
+    width: 10%;
+  }
+  .player .options {
+    display: none !important;
+  }
+  .controls {
+    justify-content: center !important;
+    align-items: center;
+  }
+  .player .controls .buttons div:not(#playSong) {
+    display: none;
+  }
+  .player .controls .progress {
+    position: absolute;
+    transform: translate(-50%, 0%);
+    left: 50%;
+    width: 90%;
+    bottom: 6px;
+    justify-content: space-around !important;
+  }
+}

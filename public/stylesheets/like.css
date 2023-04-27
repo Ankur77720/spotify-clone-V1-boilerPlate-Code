@@ -1,0 +1,87 @@
+#content .liked {
+  width: 100%;
+  display: none;
+}
+
+.likes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.7rem;
+  padding-bottom: 13vh;
+}
+
+/* ******-****** Song Card ************  */
+.liked .flex-container {
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+.liked .flex-item {
+  margin-top: 10px;
+}
+/*======= write css from here =======*/
+.liked .card {
+  border: none;
+  border-radius: 0.4rem;
+}
+.liked .card .card-block {
+  background-color: rgb(31, 31, 31);
+  padding-left: 11px;
+  position: relative;
+}
+.liked .card .card-block h4 {
+  font-size: 1rem;
+}
+.liked .card .card-block h4,
+.liked .card .card-block p {
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+}
+.liked .playButton {
+  position: absolute;
+  top: 0px;
+  right: 5%;
+  transform: translateY(-50%);
+  /* background-color: #1e1e1e; */
+  border-radius: 50%;
+}
+.liked .playButton i {
+  opacity: 1;
+  font-size: 2rem;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+.liked .playButton .fa {
+  margin-left: 4px;
+  color: #00a10d;
+}
+/*======= end of css =======*/
+/*======= material box shadow =======*/
+.liked .z-depth-0 {
+  box-shadow: none !important;
+}
+.liked .z-depth-1 {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+.liked .z-depth-2 {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+.liked .z-depth-3,
+.liked .playButton {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.3);
+}
+.liked .z-depth-4 {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+}
+.liked .z-depth-5,
+.card {
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+    0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
+}

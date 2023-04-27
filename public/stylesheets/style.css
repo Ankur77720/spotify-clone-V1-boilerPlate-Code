@@ -1,0 +1,420 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  color: rgb(244, 244, 244);
+  background-color: #000;
+  position: relative;
+  z-index: 1;
+}
+::-webkit-scrollbar {
+  background-color: #00000059;
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #393939;
+  border-radius: 5px;
+}
+div:has(:not(.playing)) > * > .ri-pause-circle-fill {
+  display: none;
+}
+div:has(:not(.playing)) > * > .ri-play-circle-fill {
+  display: initial;
+}
+div:has(.playing) > * > .ri-pause-circle-fill {
+  display: initial;
+  opacity: 1;
+  transform: translateY(0) !important;
+}
+div:has(.playing) > * > .ri-play-circle-fill {
+  display: none;
+}
+.btn-success {
+  background-color: rgb(0, 146, 22) !important;
+  border-color: rgb(0, 146, 22) !important;
+}
+#main::after {
+  top: 0%;
+  left: 0%;
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 300%;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 89, 0, 0.732),
+    rgba(186, 0, 203, 0.663),
+    rgba(0, 85, 255, 0.724)
+  );
+  animation: backgroundGradient 10s linear infinite both;
+  z-index: -2;
+}
+#main::before {
+  top: 0%;
+  left: 0%;
+  content: "";
+  position: absolute;
+  background-image: linear-gradient(
+    to top,
+    #0b0b0b,
+    #0b0b0b,
+    #131313e7,
+    #1919199f,
+    #1919199d
+  );
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+@keyframes backgroundGradient {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -200%;
+  }
+  100% {
+    left: 0;
+  }
+}
+#main {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+#nav {
+  width: 20vw;
+  min-width: 200px;
+  background-color: #000;
+  height: 100%;
+  padding-top: 1rem;
+}
+#main #content {
+  width: -webkit-fill-available;
+  height: 100%;
+  overflow: auto;
+  padding-top: 4rem;
+  overflow-x: hidden;
+}
+
+#main #musics {
+  height: 100%;
+  display: none;
+}
+#main #musics .breadCrum::after {
+  content: " ";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(to top, #000, #0000005d);
+  z-index: 1;
+  backdrop-filter: blur(17px);
+  -webkit-backdrop-filter: blur(17px);
+}
+#main .musicHeading {
+  padding-left: 15px;
+}
+#musics .moreMusics {
+  padding-bottom: 13vh;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.mus {
+  max-height: 70px;
+  width: 100%;
+  background-color: #1c1c1cae;
+  border-radius: 7px;
+  padding-right: 7px;
+  transition: all 150ms ease-in-out;
+  overflow: hidden;
+}
+.mus:hover {
+  background-color: #535353ee;
+}
+.mus img {
+  max-height: 70px;
+  object-fit: contain;
+}
+.mus p,
+.mus small {
+  max-width: 30vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+}
+#content .subNav {
+  position: fixed;
+  top: 0%;
+  width: -webkit-fill-available;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 4rem;
+  padding-right: 1rem;
+  background: linear-gradient(to bottom, #0000009d, #0000002d);
+}
+#content .subNav .navButtons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000cc;
+  font-size: 2rem;
+  height: 2.5rem !important;
+  width: 2.5rem !important;
+  border-radius: 50%;
+  border: 1px solid #ffffff80;
+}
+#content .subNav .userProfile {
+  background-color: #2b2b2b;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.5rem;
+  border-radius: 1.25rem;
+  padding-right: 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+#content .subNav .userProfile i.userIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d0d0d;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  scale: 0.9;
+}
+#content .topCard {
+  max-height: 250px;
+  background-image: linear-gradient(to top right, #101010, #101010, #00000000);
+}
+#content .topCard img {
+  max-width: 200px;
+  object-fit: contain;
+  aspect-ratio: 1/1;
+}
+#content .topCard h1 {
+  max-width: 40vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#content .topCard p {
+  max-width: 40vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mainContent {
+  padding-bottom: 15vh !important;
+  display: flex;
+}
+
+#playlists {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 0.7rem;
+}
+#playlists .playlist {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgb(25, 25, 25);
+  transition: all 150ms ease-in-out;
+}
+#playlists .playlist:hover {
+  background-color: rgb(33, 33, 33);
+}
+#playlists .songTitle {
+  font-size: 1.1rem;
+  max-width: 200px;
+  width: 15vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+.mus > div,
+.mus .text,
+.playlist > div,
+.playlist .text small,
+.playlist .text {
+  pointer-events: none;
+}
+
+.playButton {
+  max-height: 70px;
+}
+.playButton i {
+  font-size: 3rem;
+  color: rgb(0, 146, 22);
+  opacity: 0;
+  text-shadow: 3px 3px 8px #000000ba;
+  max-height: 70px;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.mus:hover .playButton i,
+.playlist:hover .playButton i {
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+#playlists img {
+  max-height: 70px;
+  pointer-events: none;
+}
+
+#recommends {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.7rem;
+}
+#recommends .recommend {
+  background-color: #1919199d;
+  border-radius: 7px;
+  position: relative;
+  transition: all 150ms ease-in-out;
+}
+#recommends .recommend:hover {
+  background-color: #2c2c2c9d;
+}
+#recommends .recommend .playButton {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 40%;
+  left: 50%;
+}
+#recommends .recommend .playButton i {
+  transform: translateY(50%);
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#recommends .recommend:hover .playButton i {
+  opacity: 1;
+  transform: translateY(0);
+  text-shadow: 0 0 7px #111111;
+}
+.playButton i:hover {
+  transition: all 150ms ease-in-out;
+  scale: 1.1;
+}
+
+#recommends img {
+  max-height: 200px;
+  object-fit: contain;
+  box-shadow: 3px 3px 20px 0px #ffffff00;
+  transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+#recommends .recommend:hover img {
+  box-shadow: 3px 3px 20px 0px #000000c0;
+}
+.player {
+  width: 100%;
+  height: 11vh;
+  max-height: 100px;
+  min-height: 90px;
+  position: absolute;
+  background-color: #111;
+  border-top: 1px solid #ffffff41;
+  transform: translateX(-50%);
+  bottom: 0;
+  left: 50%;
+}
+.player .ri-heart-3-fill {
+  display: none;
+}
+
+.player .likedIt .ri-heart-3-line {
+  display: none;
+}
+.player .likedIt .ri-heart-3-fill {
+  display: initial;
+}
+.player > div {
+  width: calc(100% / 3);
+}
+.controls .buttons {
+  max-height: 3rem;
+}
+.controls .buttons i {
+  opacity: 1;
+  color: #fff;
+}
+
+.player .controls .buttons #playSong {
+  font-size: 2.5rem;
+}
+.progress {
+  background-color: #fff0;
+}
+#volumeIcon {
+  cursor: pointer;
+}
+.progress input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background-color: #fff8;
+  height: 3px !important ;
+  border-radius: 5px;
+  width: 40vw;
+  max-width: 500px;
+}
+.progress input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.progress input::-webkit-slider {
+  height: 1px;
+}
+.progress input::-webkit-slider-thumb {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #efefef;
+  cursor: pointer;
+}
+
+.options input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background-color: #fff8;
+  height: 3px !important ;
+  border-radius: 5px;
+  width: 40vw;
+  max-width: 100px;
+}
+.options input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.options input::-webkit-slider {
+  height: 1px;
+}
+.options input::-webkit-slider-thumb {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #efefef;
+}

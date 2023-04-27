@@ -1,0 +1,181 @@
+#content .searche {
+  width: 100%;
+  display: none;
+}
+
+.searches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.7rem;
+  padding-bottom: 13vh;
+}
+.search img {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+/* ******-****** Song Card ************  */
+.searche .flex-container {
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+.searche .flex-item {
+  margin-top: 10px;
+}
+/*======= write css from here =======*/
+.searche .card {
+  border: none;
+  border-radius: 0.4rem;
+}
+.searche .card .card-block {
+  background-color: rgb(31, 31, 31);
+  padding-left: 11px;
+  position: relative;
+}
+.searche .card .card-block h4 {
+  font-size: 1rem;
+}
+.searche .card .card-block h4,
+.searche .card .card-block p {
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+}
+.searche .playButton {
+  position: absolute;
+  top: 0px;
+  right: 5%;
+  transform: translateY(-50%);
+  /* background-color: #1e1e1e; */
+  border-radius: 50%;
+}
+.searche .playButton i {
+  opacity: 1;
+  font-size: 2rem;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+.searche .playButton .fa {
+  margin-left: 4px;
+  color: #00a10d;
+}
+/*======= end of css =======*/
+/*======= material box shadow =======*/
+.searche .z-depth-0 {
+  box-shadow: none !important;
+}
+.searche .z-depth-1 {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+.searche .z-depth-2 {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+.searche .z-depth-3,
+.searche .playButton {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.3);
+}
+.searche .z-depth-4 {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+}
+.searche .z-depth-5,
+.card {
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+    0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
+}
+/*======= end of shadow =======*/
+
+/* ******-****** Song Card ************  */
+
+/* *************search box ********************* */
+.searchContainer {
+  width: 350px;
+  background-color: #ffffff;
+  border-radius: 4rem;
+  padding-left: 10px;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  z-index: 11111111111;
+  height: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search__box {
+  float: left;
+  width: 0;
+  /*   display: inline; */
+  background: none;
+  color: #f7f7f7;
+  font-size: 1rem;
+  border-radius: 2rem;
+  outline: none;
+  border: none;
+  position: relative;
+  opacity: 1;
+  transition: all 0.75s ease-in;
+  cursor: pointer;
+  padding-left: 10px;
+  margin-top: 0.25rem;
+  height: 2rem;
+  caret-color: #000;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  /*   border: 2px solid tomato; */
+  /*   margin-top: 5px; */
+}
+
+/* .search__box:focus, .search__box:hover {
+  background-color: #f1f2f6;
+} */
+
+.search__icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  float: right;
+  font-size: 1.5rem;
+  display: flex;
+  margin-top: 0;
+  cursor: pointer;
+  color: #009708bf;
+  transition: all 0.25s ease-in;
+  border-radius: 50%;
+  position: relative;
+  transform: translate(0, 0) scale(1.02);
+}
+.search i::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.search__icon::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.searchContainer > .search__box {
+  padding: 0 1rem;
+}
+
+.searchContainer > .search__icon {
+  background-color: #2e2e2e;
+}
+
+.searche .show {
+  width: 85%;
+  border: 1px solid rgb(0, 123, 2);
+}
+
+/* *************search box ********************* */

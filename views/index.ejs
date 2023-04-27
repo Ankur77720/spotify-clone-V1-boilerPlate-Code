@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .preloader {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        height: 100vh;
+        width: 100vw;
+        background-color: #000;
+        transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .load-1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border-width: 10px;
+        border-style: solid;
+        border-color: #000;
+        border-top-color: #008600;
+        border-bottom-color: #008600;
+        animation: load1 1s linear infinite;
+      }
+      .load-2 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border-width: 10px;
+        border-style: solid;
+        border-color: #000;
+        border-top-color: #008600;
+        border-bottom-color: #008600;
+        animation: load1 1.5s linear infinite;
+      }
+      .load-3 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border-width: 10px;
+        border-style: solid;
+        border-color: #000;
+        border-top-color: #008600;
+        border-bottom-color: #008600;
+        animation: load1 2s linear infinite;
+      }
+      .load-4 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border-width: 10px;
+        border-style: solid;
+        border-color: #000;
+        border-top-color: #008600;
+        border-bottom-color: #008600;
+        background-color: #008600;
+        animation: load1 2.5s linear infinite;
+      }
+      .load-5 {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #000;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
+
+      @keyframes load1 {
+        50% {
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+    </style>
+    <meta
+      name="description"
+      content="Stream your favorite music and videos with our app. Our platform offers a vast library of content from popular artists and creators. Sign up now for a free trial."
+    />
+    <meta property="og:title" content="Stream Your Favorite Music and Videos" />
+    <meta
+      property="og:description"
+      content="Stream your favorite music and videos with our app. Our platform offers a vast library of content from popular artists and creators. Sign up now for a free trial."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beatstream | HOME</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/nav.css" />
+    <link rel="stylesheet" href="/stylesheets/search.css" />
+    <link rel="stylesheet" href="/stylesheets/like.css" />
+    <link rel="stylesheet" href="/stylesheets/responsive.css" />
+    <link rel="stylesheet" href="/stylesheets/library.css" />
+  </head>
+  <body>
+    <div id="main">
+      <div id="nav" class="d-flex flex-column gap-2 align-items-start ps-2">
+        <h4 class="logo" class="ms-2">
+          <img
+            src="/assets/logo.png"
+            style="height: 3rem; width: 3rem"
+            alt=""
+          />
+          <span>Beatstream</span>
+        </h4>
+        <div class="mainNavigation">
+          <ul>
+            <li class="nav-item active" tabindex="1" id="home">
+              <i class="ri-home-2-fill fw-lighter"></i>
+              <span> HOME </span>
+            </li>
+            <li class="nav-item" tabindex="2" id="search">
+              <i class="ri-search-line"></i>
+              <span> SEARCH </span>
+            </li>
+            <li class="nav-item" tabindex="5" id="likeTab">
+              <i class="ri-heart-3-fill"></i>
+              <span> LIKED </span>
+            </li>
+
+            <br />
+            <div class="userNavigation">
+              <li class="nav-item" tabindex="4" id="playListTab">
+                <i class="ri-play-list-line"></i>
+                <span> Your playlist </span>
+              </li>
+              <li class="nav-item" tabindex="3" onclick="toLibrary()">
+                <i class="ri-book-3-line"></i>
+                <span> Library </span>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <hr />
+        <div class="recentPlayed"> </div>
+      </div>
+      <div id="content" class="pb-5">
+        <div class="mainContent p-2 px-5 flex-column gap-4">
+          <div class="topCard d-flex gap-3 align-items-center px-2">
+            <img loading="lazy" src="/image/<%= topMusic.poster %>" alt="" />
+            <div
+              class="text d-flex flex-column justify-content-around align-items-start px-3 py-4"
+            >
+              <small class="mb-2">Song</small>
+              <h1><%= topMusic.title %></h1>
+              <p class="opacity-75"><%= topMusic.artist %></p>
+              <div class="buttons d-flex gap-3">
+                <div
+                  onclick="play( `<%= topMusic.name %>`, `<%= topMusic.poster %>`,`<%= topMusic.title %>`,`<%= topMusic.artist %>`,`<%= topMusic._id %>`)"
+                  class="btn btn-success text-capitalize rounded-5 py-2 px-4"
+                  ><p class="p-0 m-0"> play </p></div
+                >
+              </div>
+            </div>
+          </div>
+          <div id="playlists">
+            <% songs.forEach(song=>{ %>
+            <div
+              class="playlist d-flex pe-3 rounded-2 overflow-hidden justify-content-between"
+              onclick="play( `<%= song.name %>`, `<%= song.poster %>`,`<%= song.title %>`,`<%= song.artist %>`,`<%= song._id %>`)"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center gap-3"
+              >
+                <img loading="lazy" src="/image/<%= song.poster %>" alt="" />
+                <div class="text">
+                  <h4 class="songTitle m-0 p-0"> <%= song.title %> </h4>
+                  <small class="opacity-75">
+                    <%= song.artist.split('/')[0] %></small
+                  >
+                </div>
+              </div>
+              <div
+                onclick="play( `<%= song.name %>`, `<%= song.poster %>`,`<%= song.title %>`,`<%= song.artist %>`,`<%= song._id %>`)"
+                class="playButton btn border-0 d-flex align-items-center justify-content-center"
+              >
+                <i class="ri-play-circle-fill"></i>
+                <i class="ri-pause-circle-fill"></i>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+          <h4 class="mt-3 text-capitalize">Stream best playlists</h4>
+          <div id="recommends">
+            <% playLists.forEach((playList,index)=>{ %>
+            <div
+              class="recommend p-3 d-flex flex-column gap-2"
+              onclick="openPlaylist(`<%= playList._id  %>`)"
+            >
+              <img loading="lazy" src="/artist/<%= playList.poster %>" alt="" />
+              <div class="text p-2">
+                <div class="artists">
+                  <h6> <%= playList.title %> </h6>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+          <h4 class="mt-3 text-capitalize">play trending musics</h4>
+          <div id="recommends">
+            <% dailyRemixes.forEach((dailyRemix,index)=>{ %>
+            <div
+              class="recommend p-3 d-flex flex-column gap-2"
+              onclick="openPlayList(`<%= dailyRemix.artist.split('/')[0] %>`)"
+            >
+              <img
+                loading="lazy"
+                src="/image/<%= dailyRemix.poster %>"
+                alt=""
+              />
+              <div class="text p-2 pb-0">
+                <h6>Daily remix <%= index + 1 %></h6>
+              </div>
+              <div
+                onclick="play( `<%= dailyRemix.name %>`, `<%= dailyRemix.poster %>`,`<%= dailyRemix.title %>`,`<%= dailyRemix.artist %>`)"
+                class="playButton btn border-0 d-flex align-items-center justify-content-center"
+              >
+                <i class="ri-play-circle-fill"></i>
+                <i class="ri-pause-circle-fill"></i>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+          <h4 class="mt-3 text-capitalize"
+            >Daily dose of music by top artists</h4
+          >
+          <div id="recommends">
+            <% artists.forEach((artist,index)=>{ %>
+            <div
+              class="recommend p-3 d-flex flex-column gap-2 justify-content-center align-items-center"
+              onclick="openPlayList(`<%= artist.name %>`)"
+            >
+              <img
+                loading="lazy"
+                style="
+                  border-radius: 50%;
+                  object-fit: cover;
+                  max-height: 180px;
+                  height: 20vh;
+                  max-width: 180px;
+                  width: 20vh;
+                "
+                src="/artist/<%= artist.image %>"
+                alt=""
+              />
+              <div class="text p-2 py-1">
+                <div class="artists">
+                  <small class="opacity-75"> By <%= artist.name %> </small>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+        <div id="musics" class="p-2 pt-5">
+          <div
+            class="breadCrum position-fixed w-100 h-100"
+            style="top: 0%; left: 50%; transform: translateX(-50%); z-index: -1"
+          >
+            <img
+              src="/images/Screenshot_20230307_094748.png"
+              alt=""
+              style="
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                object-position: top;
+              "
+              id="breadImage"
+            />
+          </div>
+          <h3 class="musicHeading mb-3"> </h3>
+          <hr />
+          <div
+            class="moreMusics d-flex flex-column justify-content-start align-items-start gap-1"
+          >
+          </div>
+        </div>
+        <div class="searche">
+          <div class="searchContainer">
+            <input
+              type="text"
+              id="searchValue"
+              placeholder="Search your favorite songs"
+              class="search__box show border-0"
+            />
+            <i class="fas ri-search-line search__icon" id="icon"></i>
+          </div>
+          <div class="searches mt-3"></div>
+        </div>
+        <div class="liked">
+          <div class="likes mt-3"></div>
+        </div>
+        <div class="library">
+          <div class="books px-1 px-lg-5"> </div>
+        </div>
+        <div class="subNav justify-content-between px-lg-3 px-2">
+          <div class="navButtons d-flex gap-2">
+            <button id="toHome" class="btn border-0" onclick="toHome()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                width="24"
+                fill="#fff9"
+              >
+                <path d="M10 21.3.7 12 10 2.7l1.075 1.05L2.825 12l8.25 8.25Z" />
+              </svg>
+            </button>
+            <button class="btn border-0" onclick="toLastState()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                width="24"
+                fill="#fff9"
+              >
+                <path
+                  d="m8 21.3-1.05-1.05L15.175 12 6.95 3.75 8 2.7l9.325 9.3Z"
+                />
+              </svg>
+            </button>
+            <h4 class="textLogo d-none ms-1 d-flex align-items-center">
+              <img
+                src="/assets/logo.png"
+                style="height: 1.8rem; width: 1.8rem"
+                alt=""
+              />
+              <span> Beatstream </span>
+            </h4>
+          </div>
+          <div class="dropdown">
+            <div
+              class="userProfile btn text-light border-0 dropdown-toggle w-100 p-0 pe-3 pe-lg-3 pe-md-3 pe-sm-0"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="ri-user-6-fill userIcon" style="color: #fff"></i>
+              <div class="username d-flex gap-1">
+                <span><%= username %> </span>
+              </div>
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li
+                class="dropdown-item d-flex justify-content-center align-items-center gap-3"
+                onclick="openPlayListTab()"
+              >
+                <span class="w-100 text-start"> Your playlist </span>
+              </li>
+
+              <li
+                class="dropdown-item d-flex justify-content-center align-items-center gap-3"
+                onclick="toLibrary()"
+              >
+                <span class="w-100 text-start"> library </span>
+              </li>
+
+              <a
+                class="dropdown-item d-flex justify-content-center align-items-center gap-3"
+                href="/logout"
+              >
+                <span class="w-100 text-start">logout</span>
+                <i class="ri-logout-box-r-line"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="player pause d-flex px-2 py-2 justify-content-between px-3">
+        <audio id="song" src="/file/<%= lastPlaying.name %>"></audio>
+        <div class="details d-flex gap-3">
+          <img
+            loading="lazy"
+            id="playerImg"
+            src="/image/<%= lastPlaying.poster %>"
+            alt="Image here"
+          />
+          <div
+            class="text text-light d-flex flex-column gap-0 justify-content-center"
+          >
+            <p id="playerSongTitle" class="songName m-0 p-0 fw-bold"
+              ><%= lastPlaying.title %></p
+            >
+            <small id="playerSongArtist" class="artist opacity-50"
+              ><% lastPlaying.artist.split('/').forEach(artist=>{ %> <%= artist
+              %> <% }) %>
+            </small>
+          </div>
+          <div
+            class="btn border-0 d-flex justify-content-center align-items-center"
+            id="like"
+            onclick="likeIt()"
+          >
+            <i class="text-light ri-heart-3-line"></i>
+            <i class="ri-heart-3-fill text-success"></i>
+          </div>
+        </div>
+        <div
+          class="controls d-flex flex-column justify-content-start align-items-centers gap-0"
+        >
+          <div
+            class="buttons d-flex justify-content-center align-items-center gap-3"
+          >
+            <div class="btn border-0 p-0 m-0" id="shuffle" onclick="shuffle()">
+              <i class="ri-shuffle-line"></i>
+            </div>
+            <div class="btn border-0 p-0 m-0" id="prevTrack">
+              <i class="ri-skip-back-fill"></i>
+            </div>
+            <div class="btn border-0 p-0 m-0" id="playSong">
+              <i class="ri-play-circle-fill"></i>
+              <i class="ri-pause-circle-fill"></i>
+            </div>
+            <div class="btn border-0 p-0 m-0" id="nextTrack">
+              <i class="ri-skip-forward-fill"></i>
+            </div>
+            <div class="btn border-0 p-0 m-0" id="loop" onclick="loop()">
+              <i class="ri-repeat-line"></i>
+            </div>
+          </div>
+          <div
+            class="progress d-flex justify-content-center align-items-center gap-2"
+          >
+            <div class="btn border-0 p-0 m-0 d-none mobilePrev">
+              <i class="ri-skip-back-fill"></i>
+            </div>
+            <label for="songProgress">
+              <p class="d-inline-block m-0 p-0 opacity-50" id="start">00:00</p>
+            </label>
+            <input type="range" min="0" value="0" id="songProgress" />
+            <p class="d-inline-block m-0 p-0 opacity-50" id="end">00:00</p>
+            <div class="btn border-0 p-0 m-0 d-none mobileNext">
+              <i class="ri-skip-forward-fill"></i>
+            </div>
+          </div>
+        </div>
+        <div
+          class="options d-flex justify-content-end align-items-center gap-2"
+        >
+          <div class="btn border-0 bg-transparent dropup">
+            <button
+              class="btn border-0 text-light dropdown-toggle"
+              type="button"
+              id="addToPlayList"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+            >
+              <i class="ri-play-list-add-line"></i>
+            </button>
+            <div
+              class="dropdown-menu px-2"
+              aria-labelledby="addToPlayList"
+              id="addTo_playlists"
+            >
+              <% user.playlists.forEach(playLs=>{ %>
+              <a
+                class="dropdown-item btn btn-light"
+                onclick="addToPlayList('<%= playLs._id %>')"
+              >
+                Add to <%= playLs.title %></a
+              >
+              <% }) %>
+              <a
+                class="dropdown-item btn btn-dark"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModalCenter"
+              >
+                create new playlist
+              </a>
+            </div>
+          </div>
+
+          <label for="volume" class="opacity-75">
+            <i
+              class="ri-volume-up-fill"
+              id="volumeIcon"
+              onclick="mutedUnmuted()"
+            ></i>
+          </label>
+          <input
+            type="range"
+            id="volume"
+            min="0"
+            max="100"
+            value="40"
+            class="opacity-75"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <form id="createPlayList">
+            <div class="modal-body bg-dark">
+              <div class="mb-3 col-11">
+                <label class="form-label" for="playListName"
+                  >Enter playlist name</label
+                >
+                <input
+                  id="playListName"
+                  type="text"
+                  class="form-control shadow-none"
+                  required="true"
+                  placeholder="example @bollywoodmush"
+                  name="playListName"
+                />
+              </div>
+            </div>
+            <div class="modal-footer bg-dark">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                >Close</button
+              >
+              <button type="submit" class="btn btn-success"
+                >Save changes</button
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="preloader">
+      <div class="load-1"></div>
+      <div class="load-2"></div>
+      <div class="load-3"></div>
+      <div class="load-4"></div>
+      <div class="load-5"></div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var queue = JSON.parse(`<%-JSON.stringify(currentQueue)%>`);
+      var user = JSON.parse(`<%-JSON.stringify(user)%>`);
+      console.log(user.playlists);
+      var likedSongs = JSON.parse(`<%-JSON.stringify(user.liked)%>`);
+      var myLibrary = queue;
+      var songId = JSON.parse(`<%-JSON.stringify(lastPlaying._id)%>`);
+    </script>
+    <script src="/javascripts/script.js"></script>
+    <script src="/javascripts/search.js"></script>
+    <script>
+      window.addEventListener("load", (even) => {
+        document.querySelector(".preloader").style.top = "-50%";
+        document.querySelector(".preloader").style.opacity = "0";
+        setTimeout(() => {
+          document.querySelector(".preloader").style.display = "none";
+        }, 1000);
+      });
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      socket.emit("connected", { userId: user._id });
+      socket.on("currentlyPlaying", (msg) => {
+        fromCurrentDevice = false;
+        play(msg.songFile, msg.img, msg.title, msg.artist, msg.id);
+        fromCurrentDevice = true;
+      });
+      socket.on("pause", (msg) => {
+        fromCurrentDevice = false;
+        pause();
+        fromCurrentDevice = true;
+      });
+      socket.on("play", (msg) => {
+        fromCurrentDevice = false;
+        playSon();
+        fromCurrentDevice = true;
+      });
+      socket.on("changeCurrentTime", (msg) => {
+        song.currentTime = msg.currentTime;
+      });
+    </script>
+  </body>
+</html>

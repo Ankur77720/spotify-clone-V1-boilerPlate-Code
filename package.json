@@ -1,0 +1,28 @@
+{
+  "name": "gridfs",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-session": "1.17.3",
+    "gridfs-stream": "1.1.1",
+    "http-errors": "~1.6.3",
+    "method-override": "3.0.0",
+    "mongoose": "6.0.0",
+    "morgan": "1.9.1",
+    "multer": "1.4.4",
+    "multer-gridfs-storage": "5.0.2",
+    "passport": "0.6.0",
+    "passport-google-oidc": "^0.1.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "7.1.2",
+    "socket.io": "^4.6.1"
+  }
+}
