@@ -6,7 +6,7 @@ const Grid = require('gridfs-stream')
 const music = require('./music.js')
 var localStrategy = require('passport-local')
 var passport = require('passport')
-require('dotenv').config()
+var playListModel = require('./playList.js')
 
 mongoose
   .connect('mongodb://0.0.0.0/spotify')
