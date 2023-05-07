@@ -39,7 +39,7 @@ body {
   font-weight: normal;
   line-height: 1.5;
   color: var(--color-white);
-  background: linear-gradient(to right, rgb(62, 0, 39), rgb(36, 0, 72));
+  background-color: rgb(20, 20, 20);
 }
 a,
 button {
