@@ -403,7 +403,7 @@ function toLibrary() {
       <div class="flex-container">
         <div class="card flex-item rounded-2 overflow-hidden">
           <img
-            src="/assets/like.png"
+            src="/resources/like.png"
             alt="thumbnail"
             class="img-fluid card-img-top"
             style="pointer-events: none"
@@ -426,7 +426,7 @@ function toLibrary() {
         <div class="flex-container">
           <div class="card flex-item rounded-2 overflow-hidden">
             <img
-              src="/assets/music.png"
+              src="/resources/music.png"
               alt="thumbnail"
               class="img-fluid card-img-top"
               style="pointer-events: none"
@@ -453,7 +453,7 @@ function toLibrary() {
     <div class="col-12">
       <div class="flex-container">
         <div class="card flex-item">
-          <img src="/assets/add.png" />
+          <img src="/resources/add.png" />
           <div class="card-block">
             <h4 style="pointer-events: none" class="card-title mt-3"
               >Create new playList</h4
