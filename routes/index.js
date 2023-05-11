@@ -108,21 +108,12 @@ router.get('/logout', (req, res, next) => {
 //   var dailyRemixes = await music
 //     .find({})
 //     .skip(Math.floor(Math.random() * 270))
-//     .limit(100)
-//   dailyRemixes = shuffleArray(dailyRemixes)
-//   var temp = []
-//   for (var i = 0; i < 10; i++) {
-//     temp.push(dailyRemixes[i])
-//   }
-//   dailyRemixes = temp
-//   var currentQueue = await userModel
-//     .findOne({ username: req.user.username })
-//     .populate('queue')
-//   currentQueue = currentQueue.queue
+//     .limit(10)
 //   var currentUser = await userModel
 //     .findOne({ username: req.user.username })
 //     .populate('playlists')
-
+//     .populate('queue')
+// var currentQueue = currentUser.queue
 //   var lastPlaying
 //   if (req.user.lastPlaying) lastPlaying = req.user.lastPlaying
 //   else lastPlaying = topMusic
