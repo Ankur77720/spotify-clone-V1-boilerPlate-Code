@@ -9,7 +9,7 @@ var passport = require('passport')
 var playlists = require('./playList.js')
 
 mongoose
-  .connect('mongodb://0.0.0.0/spotify')
+  .connect('mongodb://0.0.0.0/databaseName')
   .then((result) => {
     console.log('connected to database')
   })
