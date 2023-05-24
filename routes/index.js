@@ -8,32 +8,18 @@ var localStrategy = require('passport-local')
 var passport = require('passport')
 var playlists = require('./playList.js')
 
-mongoose
-  .connect('mongodb://0.0.0.0/databaseName')
-  .then((result) => {
-    console.log('connected to database')
-  })
-  .catch((err) => {
-    console.log('err')
-  })
-var conn = mongoose.connection
-function isAlreadyLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) res.redirect('/')
-  else return next()
-}
+
+
+
+// **************** user authentication related routes here
 function isloggedIn(req, res, next) {
   if (req.isAuthenticated()) return next()
   else res.redirect('/login')
 }
-function shuffleArray(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[arr[i], arr[j]] = [arr[j], arr[i]]
-  }
-  return arr
+function isAlreadyLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) res.redirect('/')
+  else return next()
 }
-
-// **************** user authentication related routes here
 passport.use(new localStrategy(userModel.authenticate()))
 router.post('/register', isAlreadyLoggedIn, async (req, res, next) => {
   var userQueue = shuffleArray(
@@ -71,7 +57,7 @@ router.post(
     successRedirect: '/',
     failureRedirect: '/failedLogin',
   }),
-  (req, res, next) => {},
+  (req, res, next) => { },
 )
 router.get('/failedLogin', (req, res, next) => {
   res.render('login', { message: 'Username or password is not valid !' })
@@ -92,40 +78,8 @@ router.get('/logout', (req, res, next) => {
 // **************** user authentication related routes here
 
 /* GET home page. */
-// router.get('/', isloggedIn, async function (req, res, next) {
-//   var topMusic
-//   topMusic = await music
-//     .find({})
-//     .skip(Math.floor(Math.random() * 360))
-//     .limit(1)
-//   topMusic = topMusic[0]
-//   var songs = (
-//     await music
-//       .find({})
-//       .skip(Math.floor(Math.random() * 360))
-//       .limit(6)
-//   ).reverse()
-//   var dailyRemixes = await music
-//     .find({})
-//     .skip(Math.floor(Math.random() * 270))
-//     .limit(10)
-//   var currentUser = await userModel
-//     .findOne({ username: req.user.username })
-//     .populate('playlists')
-//     .populate('queue')
-// var currentQueue = currentUser.queue
-//   var lastPlaying
-//   if (req.user.lastPlaying) lastPlaying = req.user.lastPlaying
-//   else lastPlaying = topMusic
-//   res.render('index', {
-//     username: req.user.username,
-//     topMusic,
-//     songs,
-//     dailyRemixes,
-//     lastPlaying,
-//     currentQueue: currentQueue,
-//     user: currentUser,
-//   })
-// })
+router.get('/', (req, res) => {
+  res.render('home')
+})
 
 module.exports = router
